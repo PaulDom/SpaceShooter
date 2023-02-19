@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int points = 0;
+
     void Update()
     {
         Move();
