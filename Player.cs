@@ -5,10 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int points = 0;
+    public Projectile laserPrefab;
+    public float shootInterval = 0.5f;
+    public float shootTimer = 0;
+    public Transform posShoot;
 
     void Update()
     {
         Move();
+        
+        shootTimer += Time.deltaTime;
+        if (shootTimer >= shootInterval)
+        {
+            Shoot();
+            shootTimer = 0;
+        }
+    }
+
+
+    void Shoot()
+    {
+        Instantiate(laserPrefab, posShoot.position, transform.rotation);
     }
 
     void Move()
